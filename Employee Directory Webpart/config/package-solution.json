@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "sql-corporate-directory-client-side-solution",
+    "id": "28a4ee95-f08c-478a-b110-cc9df2a7078f",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "sql-corporate-directory description"
+      },
+      "longDescription": {
+        "default": "sql-corporate-directory description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "sql-corporate-directory Feature",
+        "description": "The feature that activates elements of the sql-corporate-directory solution.",
+        "id": "ba990edf-c11a-4d96-8390-7467f9e0f19a",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/sql-corporate-directory.sppkg"
+  }
+}

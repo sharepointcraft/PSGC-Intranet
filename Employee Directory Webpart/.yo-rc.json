@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.4",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0",
+    "libraryName": "sql-corporate-directory",
+    "libraryId": "28a4ee95-f08c-478a-b110-cc9df2a7078f",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "sql-corporate-directory",
+    "solutionShortDescription": "sql-corporate-directory description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
