@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "power-plant-statistics",
+    "id": "6a35e45a-27e1-454a-b765-851c386ae155",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "power-plant-statistics description"
+      },
+      "longDescription": {
+        "default": "power-plant-statistics description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "power-plant-statistics Feature",
+        "description": "The feature that activates elements of the power-plant-statistics solution.",
+        "id": "4c772ad2-8c8f-40dd-9b09-50f56b386fb9",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/power-plant-statistics.sppkg"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.4",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0",
+    "libraryName": "power-plant-statistics",
+    "libraryId": "6a35e45a-27e1-454a-b765-851c386ae155",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "power-plant-statistics",
+    "solutionShortDescription": "power-plant-statistics description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
