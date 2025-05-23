@@ -50,6 +50,24 @@ body {
   //padding-right: 5px;
 }
 
+.filterButtons::-webkit-scrollbar {
+  width: 7px;
+}
+
+.filterButtons::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.filterButtons::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.filterButtons::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+
 .filterButtons button {
   background: #e0e0e0;
   border: none;
@@ -121,28 +139,28 @@ body {
 
 .personCard {
   background: white;
-  padding: 12px 10px;
+  padding-left: 7px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   text-align: left;
-  gap: 15px;
+  gap: 7px;
   width: 300px;
   box-sizing: border-box;
   height: 140px;
 }
 
 .initials {
-  width: 70px;
-  height: 70px;
+  width: 67px;
+  height: 67px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: bold;
   color: white;
-  font-size: 22px;
+  font-size: 20px;
   flex-shrink: 0;
 }
 
@@ -152,13 +170,14 @@ body {
 
 .personDetails h3 {
   margin: 0;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .personDetails p {
-  margin: 3px 0;
-  font-size: 16px;
+  margin: 0px 0;
+  font-size: 14px;
   color: #555;
+  margin-bottom: 1px;
 }
 
 .personDetails svg {
@@ -221,7 +240,7 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 86%;
+  max-width: 90%;
 }
 .phoneLink {
   color: inherit;
@@ -283,7 +302,7 @@ body {
   font-size: 14px;
   padding: 8px 12px;
   transition: .3s;
-  width: 89%;
+  width: 96%;
   margin-bottom: 10px;
 
   &:hover {

@@ -2,8 +2,8 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import styles from "./SqlCorporateDirectory.module.scss";
 import type { ISqlCorporateDirectoryProps } from "./ISqlCorporateDirectoryProps";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhone } from "@fortawesome/free-solid-svg-icons";
+//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+//import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { HttpClient } from "@microsoft/sp-http";
 
@@ -13,6 +13,7 @@ interface IPerson {
   Department: string;
   PhoneNumber: string;
   SecondaryPhone?: string;
+  Email?: string;
   Supervisor?: string;
   Location: string;
   Initials?: string;
@@ -80,6 +81,7 @@ const SqlCorporateDirectory: React.FC<ISqlCorporateDirectoryProps> = ({ context 
         const rawSupervisor = cols[4] || "";
         const primaryPhone = cols[5] || "";
         const secondaryPhone = cols[6] || "";
+        const email = cols[7] || "";
 
         // 1) DISPLAY NAME logic: if it contains a comma, use as-is;
         //    otherwise fall back to FirstName + " " + LastName
@@ -107,6 +109,7 @@ const SqlCorporateDirectory: React.FC<ISqlCorporateDirectoryProps> = ({ context 
           JobTitle: jobTitle,
           PhoneNumber: primaryPhone,
           SecondaryPhone: secondaryPhone,
+          Email: email,
           Supervisor: supervisor,
           Initials: initials,
           ProfileColor: profileColor,
@@ -149,16 +152,27 @@ const SqlCorporateDirectory: React.FC<ISqlCorporateDirectoryProps> = ({ context 
 
     if (searchTerm) {
       const lowerSearch = searchTerm.toLowerCase();
-
-      filtered = filtered.filter((person) =>
-        person.FullName?.toLowerCase().includes(lowerSearch) ||
-        person.JobTitle?.toLowerCase().includes(lowerSearch) ||
-        person.Supervisor?.toLowerCase().includes(lowerSearch) ||
-        person.PhoneNumber?.toLowerCase().includes(lowerSearch) ||
-        person.SecondaryPhone?.toLowerCase().includes(lowerSearch)
+    
+      // Prioritize matches in FullName
+      const fullNameMatches = filtered.filter(person =>
+        person.FullName?.toLowerCase().includes(lowerSearch)
       );
+    
+      // Other matches (excluding those already in fullNameMatches based on FullName)
+      const otherMatches = filtered.filter(person =>
+        (
+          person.JobTitle?.toLowerCase().includes(lowerSearch) ||
+          person.Supervisor?.toLowerCase().includes(lowerSearch) ||
+          person.PhoneNumber?.toLowerCase().includes(lowerSearch) ||
+          person.SecondaryPhone?.toLowerCase().includes(lowerSearch)
+        ) &&
+        !fullNameMatches.includes(person) // Exclude already matched by FullName
+      );
+    
+      // Combine: FullName matches first, then other matches
+      filtered = [...fullNameMatches, ...otherMatches];
     }
-
+    
     setFilteredPeople(filtered);
     setCurrentPage(1);
   }, [people, activeFilter, searchTerm]);
@@ -210,7 +224,7 @@ const SqlCorporateDirectory: React.FC<ISqlCorporateDirectoryProps> = ({ context 
 
   return (
     <>
-    <div className={styles.directoryTitle}>Employee Search</div>
+    {/* <div className={styles.directoryTitle}>Employee Search</div> */}
     <div className={styles.directoryContainer}>
       <aside className={styles.sidebar}>
         {/* <FilterSection title="Department" options={departments} type="Department" activeFilter={activeFilter} handleFilterChange={handleFilterChange} /> */}
@@ -287,26 +301,33 @@ const PersonCard: React.FC<{ person: IPerson }> = ({ person }) => (
 
     <div className={styles.personDetails}>
       <h3>{person.FullName}</h3>
-      <p className={styles.singleLine}>{truncateText(person.JobTitle, 30)}</p>
+
+      {person.Supervisor && (
+        <p className={styles.singleLine}>{truncateText(person.JobTitle, 30)}</p>
+      )}
+
       {person.Supervisor && (
         <p className={styles.singleLine}>{truncateText(person.Supervisor, 30)}</p>
       )}
 
       {person.PhoneNumber && (
         <p className={styles.singleLine}>
-          <FontAwesomeIcon icon={faPhone} />{" "}
-          <a href={`tel:${person.PhoneNumber}`} className={styles.phoneLink}>
-            {person.PhoneNumber}
-          </a>
+          <i className="fas fa-phone" style={{ marginRight: '6px' }}></i>
+          <a href={`tel:${person.PhoneNumber}`} className={styles.phoneLink}>{person.PhoneNumber}</a>
         </p>
       )}
 
       {person.SecondaryPhone && person.SecondaryPhone !== person.PhoneNumber && (
         <p className={styles.singleLine}>
-          <FontAwesomeIcon icon={faPhone} />{" "}
-          <a href={`tel:${person.SecondaryPhone}`} className={styles.phoneLink}>
-            {person.SecondaryPhone}
-          </a>
+          <i className="fas fa-phone" style={{ marginRight: '6px' }}></i>
+          <a href={`tel:${person.SecondaryPhone}`} className={styles.phoneLink}>{person.SecondaryPhone}</a>
+        </p>
+      )}
+
+      {person.Email && (
+        <p className={styles.singleLine}>
+          <i className="fas fa-envelope" style={{ marginRight: "6px" }}></i>
+          <a href={`mailto:${person.Email}`} className={styles.phoneLink}>{person.Email}</a>
         </p>
       )}
     </div>

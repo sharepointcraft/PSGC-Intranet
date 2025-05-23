@@ -27,8 +27,8 @@
     },
     "features": [
       {
-        "title": "sql-corporate-directory Feature",
-        "description": "The feature that activates elements of the sql-corporate-directory solution.",
+        "title": "Corporate Directory Feature",
+        "description": "The feature that activates elements of the corporate-directory solution.",
         "id": "ba990edf-c11a-4d96-8390-7467f9e0f19a",
         "version": "1.0.0.0"
       }

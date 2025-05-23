@@ -3,7 +3,7 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   type IPropertyPaneConfiguration,
-  PropertyPaneTextField
+ // PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
@@ -101,21 +101,6 @@ export default class SqlCorporateDirectoryWebPart extends BaseClientSideWebPart<
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
-        {
-          header: {
-            description: strings.PropertyPaneDescription
-          },
-          groups: [
-            {
-              groupName: strings.BasicGroupName,
-              groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
-                })
-              ]
-            }
-          ]
-        }
       ]
     };
   }

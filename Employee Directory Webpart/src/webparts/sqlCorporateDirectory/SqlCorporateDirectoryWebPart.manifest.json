@@ -14,7 +14,7 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", 
     "group": { "default": "Advanced" },
-    "title": { "default": "sql-corporate-directory" },
+    "title": { "default": "Corporate Directory" },
     "description": { "default": "sql-corporate-directory description" },
     "officeFabricIconFontName": "Page",
     "properties": {
